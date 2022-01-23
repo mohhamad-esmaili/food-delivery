@@ -7,57 +7,62 @@ class RecentOrders extends StatelessWidget {
     return Container(
       height: 100.0,
       width: 320.0,
-      margin: EdgeInsets.all(10.0),
+      margin: EdgeInsets.all(20.0),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8.0), color: Colors.white),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8.0),
-                child: Image(
-                  width: 100.0,
-                  height: 100.0,
-                  fit: BoxFit.cover,
-                  image: AssetImage(order.food.imageUrl),
+          Expanded(
+            child: Row(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: Image(
+                    width: 100.0,
+                    height: 100.0,
+                    fit: BoxFit.cover,
+                    image: AssetImage(order.food.imageUrl),
+                  ),
                 ),
-              ),
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      order.food.name,
-                      style: TextStyle(
-                        fontSize: 17.0,
-                        fontWeight: FontWeight.w600,
-                      ),
-                      overflow: TextOverflow.ellipsis,
+                Expanded(
+                  child: Container(
+                    margin:
+                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 10.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          order.food.name,
+                          style: TextStyle(
+                            fontSize: 17.0,
+                            fontWeight: FontWeight.w600,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        Text(
+                          order.restaurant.name,
+                          style: TextStyle(
+                            fontSize: 13.0,
+                            fontWeight: FontWeight.w600,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        Text(
+                          order.date,
+                          style: TextStyle(
+                            fontSize: 13.0,
+                            fontWeight: FontWeight.w600,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
                     ),
-                    Text(
-                      order.restaurant.name,
-                      style: TextStyle(
-                        fontSize: 13.0,
-                        fontWeight: FontWeight.w600,
-                      ),
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    Text(
-                      order.date,
-                      style: TextStyle(
-                        fontSize: 13.0,
-                        fontWeight: FontWeight.w600,
-                      ),
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
           Container(
             margin: EdgeInsets.only(right: 15.0),
