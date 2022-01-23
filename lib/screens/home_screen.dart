@@ -33,41 +33,43 @@ class FoodHomeScreen extends StatelessWidget {
                       image: AssetImage(restaurant.imageUrl),
                     ),
                   ),
-                  Container(
-                    margin: EdgeInsets.symmetric(horizontal: 10.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          restaurant.name,
-                          style: TextStyle(
-                            fontSize: 17.0,
-                            fontWeight: FontWeight.w600,
+                  Expanded(
+                    child: Container(
+                      margin: EdgeInsets.symmetric(horizontal: 10.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            restaurant.name,
+                            style: TextStyle(
+                              fontSize: 17.0,
+                              fontWeight: FontWeight.w600,
+                            ),
+                            overflow: TextOverflow.ellipsis,
                           ),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        SizedBox(height: 5.0),
-                        StarWidget(restaurant.rating),
-                        SizedBox(height: 5.0),
-                        Text(
-                          restaurant.address,
-                          style: TextStyle(
-                            fontSize: 15.0,
-                            fontWeight: FontWeight.w600,
+                          SizedBox(height: 5.0),
+                          StarWidget(restaurant.rating),
+                          SizedBox(height: 5.0),
+                          Text(
+                            restaurant.address,
+                            style: TextStyle(
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.w600,
+                            ),
+                            overflow: TextOverflow.ellipsis,
                           ),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        SizedBox(height: 5.0),
-                        Text(
-                          '2 miles away',
-                          style: TextStyle(
-                            fontSize: 15.0,
-                            fontWeight: FontWeight.w600,
+                          SizedBox(height: 5.0),
+                          Text(
+                            '2 miles away',
+                            style: TextStyle(
+                              fontSize: 15.0,
+                              fontWeight: FontWeight.w600,
+                            ),
+                            overflow: TextOverflow.ellipsis,
                           ),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -171,7 +173,7 @@ class FoodHomeScreen extends StatelessWidget {
                     horizontal: 20.0, vertical: 10.0),
                 child: Text(
                   'Nearby Restaurant',
-                  style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500),
+                  style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600),
                 ),
               ),
               _buildNearRestaurant(),

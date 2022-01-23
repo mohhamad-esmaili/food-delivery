@@ -89,10 +89,10 @@ class RecentOrders extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
           child: Text(
             'Recent Orders',
-            style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500),
+            style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600),
           ),
         ),
         Container(
