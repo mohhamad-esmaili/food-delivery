@@ -119,13 +119,26 @@ class FoodHomeScreen extends StatelessWidget {
         ),
         centerTitle: true,
         actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pushNamed(CheckoutScreen.routeName);
-            },
-            child: Text(
-              'Cart (${currentUser.cart.length})',
-              style: TextStyle(color: Colors.white, fontSize: 17.0),
+          Container(
+            margin: EdgeInsets.all(8.0),
+            child: Stack(
+              children: [
+                IconButton(
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(CheckoutScreen.routeName);
+                    },
+                    icon: Icon(Icons.shopping_cart)),
+                Container(
+                  width: 20,
+                  height: 20,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20.0),
+                      color: Colors.black26),
+                  child: Center(
+                    child: Text('${currentUser.orders.length}'),
+                  ),
+                )
+              ],
             ),
           )
         ],
