@@ -1,78 +1,86 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_food_delivery_ui/data/data.dart';
-import 'package:flutter_food_delivery_ui/models/order.dart';
 import 'package:flutter_food_delivery_ui/models/restaurant.dart';
+import 'package:flutter_food_delivery_ui/screens/restaurant_screen.dart';
 import 'package:flutter_food_delivery_ui/widgets/recent_orders.dart';
 import 'package:flutter_food_delivery_ui/widgets/star_widget.dart';
 
 class FoodHomeScreen extends StatelessWidget {
-  _buildNearRestaurant() {
+  _buildNearRestaurant(BuildContext context) {
     List<Widget> restaurantList = [];
     restaurants.forEach(
       (Restaurant restaurant) {
         restaurantList.add(
-          Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: 20.0,
-            ),
-            child: Container(
-              margin: EdgeInsets.only(bottom: 15),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(18.0),
+          GestureDetector(
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => RestaurantScreen(restaurant: restaurant),
               ),
-              child: Row(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(18.0),
-                    child: Image(
-                      fit: BoxFit.cover,
-                      width: 200.0,
-                      height: 150.0,
-                      image: AssetImage(restaurant.imageUrl),
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      margin: EdgeInsets.symmetric(horizontal: 10.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            restaurant.name,
-                            style: TextStyle(
-                              fontSize: 17.0,
-                              fontWeight: FontWeight.w600,
-                            ),
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                          SizedBox(height: 5.0),
-                          StarWidget(restaurant.rating),
-                          SizedBox(height: 5.0),
-                          Text(
-                            restaurant.address,
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.w600,
-                            ),
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                          SizedBox(height: 5.0),
-                          Text(
-                            '2 miles away',
-                            style: TextStyle(
-                              fontSize: 15.0,
-                              fontWeight: FontWeight.w600,
-                            ),
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ],
+            ),
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: 20.0,
+              ),
+              child: Container(
+                margin: EdgeInsets.only(bottom: 15),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(18.0),
+                ),
+                child: Row(
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(18.0),
+                      child: Image(
+                        fit: BoxFit.cover,
+                        width: 200.0,
+                        height: 150.0,
+                        image: AssetImage(restaurant.imageUrl),
                       ),
                     ),
-                  ),
-                ],
+                    Expanded(
+                      child: Container(
+                        margin: EdgeInsets.symmetric(horizontal: 10.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              restaurant.name,
+                              style: TextStyle(
+                                fontSize: 17.0,
+                                fontWeight: FontWeight.w600,
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            SizedBox(height: 5.0),
+                            StarWidget(restaurant.rating),
+                            SizedBox(height: 5.0),
+                            Text(
+                              restaurant.address,
+                              style: TextStyle(
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.w600,
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            SizedBox(height: 5.0),
+                            Text(
+                              '2 miles away',
+                              style: TextStyle(
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.w600,
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -176,7 +184,7 @@ class FoodHomeScreen extends StatelessWidget {
                   style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w600),
                 ),
               ),
-              _buildNearRestaurant(),
+              _buildNearRestaurant(context),
             ],
           ),
         ],
