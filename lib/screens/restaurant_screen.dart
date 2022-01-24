@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_food_delivery_ui/data/data.dart';
+
 import 'package:flutter_food_delivery_ui/models/food.dart';
 import 'package:flutter_food_delivery_ui/models/restaurant.dart';
 import 'package:flutter_food_delivery_ui/widgets/restaurant_grids.dart';
@@ -61,82 +61,95 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
               )
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 25.0,
-              horizontal: 30.0,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      widget.restaurant.name,
-                      style: TextStyle(
-                        fontSize: 17.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text('2 miles away')
-                  ],
-                ),
-                SizedBox(height: 10.0),
-                StarWidget(widget.restaurant.rating),
-                SizedBox(height: 5.0),
-                Text(
-                  widget.restaurant.address,
-                ),
-                SizedBox(height: 25.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        'Reviews',
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 25.0,
+                horizontal: 30.0,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        widget.restaurant.name,
                         style: TextStyle(
-                          color: Colors.white,
+                          fontSize: 17.0,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                      style: TextButton.styleFrom(
-                        padding: EdgeInsets.symmetric(
-                          vertical: 20.0,
-                          horizontal: 40.0,
-                        ),
-                        backgroundColor: Theme.of(context).primaryColor,
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        'Contact',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                      style: TextButton.styleFrom(
-                        padding: EdgeInsets.symmetric(
-                          vertical: 20.0,
-                          horizontal: 40.0,
-                        ),
-                        backgroundColor: Theme.of(context).primaryColor,
-                      ),
-                    ),
-                  ],
-                ),
-                Expanded(
-                  child: GridView.count(
-                    padding: EdgeInsets.all(10.0),
-                    crossAxisCount: 2,
-                    children: List.generate(widget.restaurant.menu.length, (i) {
-                      Food food = widget.restaurant.menu[i];
-                      return ResturantGridBuilder(food);
-                    }),
+                      Text('2 miles away')
+                    ],
                   ),
-                ),
-              ],
+                  SizedBox(height: 10.0),
+                  StarWidget(widget.restaurant.rating),
+                  SizedBox(height: 5.0),
+                  Text(
+                    widget.restaurant.address,
+                  ),
+                  SizedBox(height: 25.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          'Reviews',
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                        style: TextButton.styleFrom(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 20.0,
+                            horizontal: 40.0,
+                          ),
+                          backgroundColor: Theme.of(context).primaryColor,
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          'Contact',
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                        style: TextButton.styleFrom(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 20.0,
+                            horizontal: 40.0,
+                          ),
+                          backgroundColor: Theme.of(context).primaryColor,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 20.0),
+                  Center(
+                    child: Text(
+                      'Menu',
+                      style: TextStyle(fontSize: 20.0),
+                    ),
+                  ),
+                  SizedBox(height: 10.0),
+                  Expanded(
+                    child: GridView.count(
+                      padding: EdgeInsets.all(1.0),
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 5,
+                      physics: BouncingScrollPhysics(),
+                      children:
+                          List.generate(widget.restaurant.menu.length, (index) {
+                        Food food = widget.restaurant.menu[index];
+                        return ResturantGridBuilder(food);
+                      }),
+                    ),
+                  ),
+                ],
+              ),
             ),
           )
         ],
